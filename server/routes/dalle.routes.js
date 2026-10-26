@@ -22,7 +22,6 @@ router.route('/').post(async (req, res) => {
         const { prompt } = req.body;
 
         console.log('📥 Prompt reçu:', prompt);
-        console.log('🔑 API KEY dispo:', process.env.OPENAI_API_KEY?.slice(0, 10)); // Masqué partiellement
 
         if (!prompt) {
             return res.status(400).json({ error: 'Prompt is required' });
@@ -44,7 +43,6 @@ router.route('/').post(async (req, res) => {
 
         res.status(500).json({
             error: 'Failed to generate image',
-            details: error.message, // Ajoute ceci pour voir la cause exacte
         });
     }
 });
